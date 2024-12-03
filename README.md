@@ -1,2 +1,5 @@
-# bimm143_github
-Classwork for BIMM143 F24
+# BIMM143
+Classwork for BIMM143 F24 at UCSD
+>_<
+>_<'
+-_-
