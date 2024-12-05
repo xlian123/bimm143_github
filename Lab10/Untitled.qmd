@@ -1,7 +1,7 @@
 ---
 title: "Halloween"
 author: "Xiaoyu Lian (A17025943)"
-format: pdf
+format: gfm
 editor: visual
 ---
 
@@ -97,9 +97,9 @@ ggplot(candy)+
 
 > Q9. Is the distribution of winpercent values symmetrical?
 
-No 
+No
 
->Q10. Is the center of the distribution above or below 50%?
+> Q10. Is the center of the distribution above or below 50%?
 
 ```{r}
 summary(candy$winpercent)
@@ -242,12 +242,11 @@ ggplot(candy) +
 
 > Q19. Which candy type is the highest ranked in terms of winpercent for the least money - i.e. offers the most bang for your buck?
 
-Reese's Miniature 
+Reese's Miniature
 
 > Q20. What are the top 5 most expensive candy types in the dataset and of these which is the least popular?
 
-Nik L Nip, Nestle Smarties, Ring pop, Hershey's Krackel, Hershey's Milk Chocolate
-Least popular: Nik L Nip
+Nik L Nip, Nestle Smarties, Ring pop, Hershey's Krackel, Hershey's Milk Chocolate Least popular: Nik L Nip
 
 ```{r}
 ord <- order(candy$pricepercent, decreasing = TRUE)
@@ -300,6 +299,7 @@ plot(pca$x[,1:2])
 ```{r}
 plot(pca$x[,1:2], col=my_cols, pch=16)
 ```
+
 how to do the original varibales columns contribute to the new PCs. I will look at PC1
 
 ```{r}
