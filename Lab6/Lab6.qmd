@@ -36,6 +36,12 @@ add(10,10,10)
 ```
 
 #Lab 6 \>Q1. Write a function grade() to determine an overall grade from a vector of student homework assignment scores dropping the lowest single score. If a student misses a homework (i.e. has an NA value) this can be used as a score to be potentially dropped. Your final function should be adquately explained with code comments and be able to work on an example class gradebook such as this one in CSV format: “https://tinyurl.com/gradeinput” \[3pts\]
+#Lab 6
+>Q1. Write a function grade() to determine an overall grade from a vector of student homework
+assignment scores dropping the lowest single score. If a student misses a homework (i.e. has an
+NA value) this can be used as a score to be potentially dropped. Your final function should be
+adquately explained with code comments and be able to work on an example class gradebook
+such as this one in CSV format: “https://tinyurl.com/gradeinput” [3pts]
 
 ```{r}
 # Example input vectors to start with
@@ -46,6 +52,7 @@ student3 <- c(90, NA, NA, NA, NA, NA, NA, NA)
 
 begin by calculating the average for student
 
+begin by calculating the average for student
 ```{r}
 mean(student1)
 mean(student2, na.rm = TRUE)
@@ -54,6 +61,9 @@ mean(student3, na.rm = TRUE)
 
 need to deal with the NA score later drop the lowest score from a given student 1. use `min()` and `which.min()` function
 
+need to deal with the NA score later
+drop the lowest score from a given student
+1. use `min()` and `which.min()` function 
 ```{r}
 min(student1)
 #find the location of the min value not the value itself, use which.min()
@@ -64,6 +74,7 @@ student1[-which.min(student1)]
 
 what if there're more than one equally low score
 
+what if there're more than one equally low score
 ```{r}
 a <- c(100,90,100,90,100,100)
 which.min(a)
@@ -77,6 +88,8 @@ removelow(student1)
 
 how to deal with NA value? one is make NA equal to zero
 
+how to deal with NA value?
+one is make NA equal to zero
 ```{r}
 student2
 #is.na set NA value to true, ! is to flip the logical, let true-->false
@@ -109,6 +122,7 @@ grade_book
 
 To use the `apply()` function on this `grade_book` data set, I need to decide whether I want to apply to the `grade()` function over the rows (1) or columns (2) of the `grade_book`
 
+To use the `apply()` function on this `grade_book` data set, I need to decide whether I want to apply to the `grade()` function over the rows (1) or columns (2) of the `grade_book`
 ```{r}
 #apply(X, margin, function), x= data, margin: 1= row, 2 = column
 mean_student <- apply(grade_book, 1, grade)
@@ -116,12 +130,14 @@ mean_student
 ```
 
 > Q2. Using your grade() function and the supplied gradebook, Who is the top scoring student overall in the gradebook?
+>Q2. Using your grade() function and the supplied gradebook, Who is the top scoring student overall in the gradebook?
 
 ```{r}
 mean_student[which.max(mean_student)]
 ```
 
 > Q3. From your analysis of the gradebook, which homework was toughest on students (i.e. obtained the lowest scores overall? \[2pts\]
+>Q3. From your analysis of the gradebook, which homework was toughest on students (i.e. obtained the lowest scores overall? [2pts]
 
 ```{r}
 #this will drop the lowest score 
@@ -135,6 +151,7 @@ apply(masked_gradebook, 2, mean)
 
 I can modify `grade()` function to do this too -ie not drop the lowest options
 
+I can modify `grade()` function to do this too -ie not drop the lowest options
 ```{r}
 #generalize the function()
 grade <- function(studentid, drop.low = TRUE){
@@ -151,6 +168,9 @@ grade(student2, FALSE)
 
 The function to calculate correlation in R is called `cor()`
 
+>Q4. Optional Extension: From your analysis of the gradebook, which homework was most predictive of overall score (i.e. highest correlation with average grade score)? 
+
+The function to calculate correlation in R is called `cor()`
 ```{r}
 x <- c(100, 90, 80, 100)
 y <- c(100, 90, 80, 100)
@@ -168,3 +188,11 @@ if want to use `apply()` function over the `masked_gradebook` and use the `mean_
 ```{r}
 apply(masked_gradebook, 2, cor, y = mean_student)
 ```
+```{r}
+cor(mean_student, masked_gradebook)
+```
+if want to use `apply()` function over the `masked_gradebook` and use the `mean_student` scores for the class
+```{r}
+apply(masked_gradebook, 2, cor, y = mean_student)
+```
+
