@@ -1,7 +1,7 @@
 ---
 title: "lab8"
 author: "Xiaoyu Lian (A17025943)"
-format: pdf
+format: gfm
 editor: visual
 ---
 
@@ -101,10 +101,9 @@ plot(wisc.pr$x[,1],wisc.pr$x[,2], col = as.factor(diagnosis))
 
 7
 
-##Interpreting PCA results 
->Q7. What stands out to you about this plot? Is it easy or difficult to understand? Why?
+##Interpreting PCA results \>Q7. What stands out to you about this plot? Is it easy or difficult to understand? Why?
 
-This graph is a mess that all info is cluster in the middle of the graph and hard to read or understand. 
+This graph is a mess that all info is cluster in the middle of the graph and hard to read or understand.
 
 ```{r}
 biplot(wisc.pr)
@@ -213,7 +212,8 @@ table(wisc.hclust.clusters, diagnosis)
 
 > Q13. Which method gives your favorite results for the same `data.dist` dataset? Explain your reasoning.
 
-I believe the "ward.D2" gives me the favorite result. The single and average are both vague when showing the 4 clusters. Complete is not that bad but the first cluster is vague and condensed on the graph. Only ward.D2 provides a clear sense of the cluster. 
+I believe the "ward.D2" gives me the favorite result. The single and average are both vague when showing the 4 clusters. Complete is not that bad but the first cluster is vague and condensed on the graph. Only ward.D2 provides a clear sense of the cluster.
+
 ```{r}
 wisc.hclustc <- hclust(data.dist, method = "complete")
 plot(wisc.hclustc)
@@ -244,7 +244,6 @@ abline(h=20, col="red", lty=2)
 wisc.hclust.clusters <- cutree(wisc.hclust, k=4)
 table(wisc.hclust.clusters, diagnosis)
 ```
-
 
 ##5. Combining Methods
 
@@ -280,6 +279,7 @@ levels(g)
 ```{r}
 plot(wisc.pr$x[,1:2], col=g)
 ```
+
 ```{r}
 ## Use the distance along the first 7 PCs for clustering i.e. wisc.pr$x[, 1:7]
 wisc.pr.hclust <- hclust(dist(wisc.pr$x[, 1:7]), method="ward.D2")
@@ -299,16 +299,15 @@ table(wisc.km$cluster, diagnosis)
 table( wisc.hclust.clusters,wisc.km$cluster)
 ```
 
->Q15. How well does the newly created model with four clusters separate out the two diagnoses?
+> Q15. How well does the newly created model with four clusters separate out the two diagnoses?
 
 ```{r}
 table(wisc.pr.hclust.clusters,diagnosis)
 ```
 
+> Q16. How well do the k-means and hierarchical clustering models you created in previous sections (i.e. before PCA) do in terms of separating the diagnoses? Again, use the table() function to compare the output of each model (wisc.km\$cluster and wisc.hclust.clusters) with the vector containing the actual diagnoses.
 
->Q16. How well do the k-means and hierarchical clustering models you created in previous sections (i.e. before PCA) do in terms of separating the diagnoses? Again, use the table() function to compare the output of each model (wisc.km$cluster and wisc.hclust.clusters) with the vector containing the actual diagnoses.
-
-The k-means shows a clear separation between malignant and benign diagnosis, which groups the malignant cases and benign cases separately. However, in hierarchical method, the separation between malignant and benign diagnosis is not that clear. 
+The k-means shows a clear separation between malignant and benign diagnosis, which groups the malignant cases and benign cases separately. However, in hierarchical method, the separation between malignant and benign diagnosis is not that clear.
 
 ```{r}
 table(wisc.km$cluster, diagnosis)
@@ -329,7 +328,4 @@ points(npc[,1], npc[,2], col="blue", pch=16, cex=3)
 text(npc[,1], npc[,2], c(1,2), col="white")
 ```
 
-
->Q18. Which of these new patients should we prioritize for follow up based on your results?
-
-
+> Q18. Which of these new patients should we prioritize for follow up based on your results?
